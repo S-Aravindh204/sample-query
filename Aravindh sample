@@ -1,0 +1,40 @@
+SAMPLE CODING 1 : 
+
+create database Altrocks_db;
+create table Altrocks_emp (emp_id varchar2(5) primary key,emp_name varchar2(70),age number(3),emp_salary number(7),phone_no number(10));
+insert into Altrocks_emp values('C31', 'Catherine',25,35000,9876543219);
+insert into Altrocks_emp values('D41', 'Daniel',46,40000,9876543218);
+insert into Altrocks_emp values('B01', 'Balan',48,28000,9876543201);
+insert into Altrocks_emp values('A21', 'Akash',38,19000,9876543210);
+insert into Altrocks_emp values('E31', 'Eniyan',28,78000,9876543270);
+select emp_name from Altrocks_emp group by emp_name;
+update Altrocks_emp set emp_id='I31', emp_name='Iniyan' where emp_id='E31' and emp_name='Eniyan';
+select*from Altrocks_emp where emp_name='Iniyan';
+delete from Altrocks_emp where emp_id='A21';
+select emp_name from Altrocks_emp where emp_salary=(select max(emp_salary) from Altrocks_emp);
+select emp_id,emp_name from Altrocks_emp where emp_salary=(select min(emp_salary) from Altrocks_emp);
+select count(*) from Altrocks_emp; 
+select avg(age) from Altrocks_emp; 
+select sum(emp_salary) from Altrocks_emp;
+select emp_name from Altrocks_emp order by 1 desc;
+alter table Altrocks_emp drop column phone_no;
+select emp_name AS Name from Altrocks_emp;
+drop table Altrocks_emp;
+
+SAMPLE CODING 2 : 
+
+create table Altrocks_emp(c_id number(5),emp_id varchar2(5) primary key,emp_name varchar2(70));
+insert into Altrocks_emp values(1,'C31', 'Catherine');
+insert into Altrocks_emp values(2,'D41', 'Daniel');
+insert into Altrocks_emp values(3,'B01', 'Balan');
+select * from Altrocks_emp;
+create table Altrocks_clients(c_id number(5),c_name varchar2(50));
+insert into Altrocks_clients values(2,'Prabhu');
+insert into Altrocks_clients values(3,'Dheena');
+insert into Altrocks_clients values(4,'Ganesh');
+select * from Altrocks_clients;
+select emp_name from Altrocks_emp inner join Altrocks_clients on Altrocks_emp.c_id = Altrocks_clients.c_id;
+select emp_name from Altrocks_emp left join Altrocks_clients on Altrocks_emp.c_id = Altrocks_clients.c_id;
+drop table Altrocks_emp;
+drop table Altrocks_clients;
+
